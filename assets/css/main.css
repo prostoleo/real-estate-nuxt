@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nuxt__build_indicator {
+  display: none !important;
+}
+
+/* .search__category {
+  @apply rounded-3xl bg-white/70 border border-solid border-gray-200 px-4 py-2;
+}
+
+.search__category.selected {
+  @apply bg-gray-900 text-white border-transparent;
+} */
