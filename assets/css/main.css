@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.nuxt__build_indicator {
+/* .nuxt__build_indicator {
   display: none !important;
-}
+} */
 
 /* .search__category {
   @apply rounded-3xl bg-white/70 border border-solid border-gray-200 px-4 py-2;

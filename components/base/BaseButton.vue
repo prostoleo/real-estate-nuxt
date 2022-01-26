@@ -16,10 +16,10 @@ button {
   background: $primary !important;
 
   font-size: 0.8rem;
-  font-weight: 500;
-  line-height: 143%;
-  letter-spacing: 0.11em;
-  border-radius: 0.2845em;
+  // font-weight: 500;
+  line-height: 100%;
+  // letter-spacing: 0.11em;
+  // border-radius: 0.2845em;
 
   color: white;
 

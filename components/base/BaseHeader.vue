@@ -73,7 +73,7 @@
             </nav>
 
             <BaseButton
-              class="lower__btn mt-8 md:mt-0 md:ml-auto"
+              class="lower__btn mt-8 rounded-md font-bold md:mt-0 md:ml-auto"
               aria-label="Подать заявку"
             >
               Подать заявку
@@ -102,6 +102,8 @@
     </BaseContainer>
   </header>
 </template>
+
+<script></script>
 
 <script>
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
@@ -143,18 +145,33 @@ export default {
     const breakpoints = useBreakpoints(breakpointsTailwind)
     // console.log('breakpoints: ', breakpoints)
     // console.log('breakpoints: ', breakpoints)
+    // console.log('breakpoints: ', breakpoints)
     // console.log('this.breakpoints: ', this.breakpoints)
     this.isSmallerMd = breakpoints.isSmaller('md')
     // console.log('this.isSmallerMd: ', this.isSmallerMd)
 
     /* this.mdBreakpoint = breakpoints.md.value
     console.log('this.mdBreakpoint: ', this.mdBreakpoint) */
+
+    window.addEventListener('resize', this.onResize)
   },
 
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
     },
+
+    onResize() {
+      if (this.isSmallerMd === true) {
+        this.isMenuOpen = false
+      } else if (this.isSmallerMd === false) {
+        this.isMenuOpen = true
+      }
+    },
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
   },
 }
 </script>
