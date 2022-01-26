@@ -118,7 +118,7 @@ export default {
 }
 
 .hero {
-  @apply min-h-[630px] relative md:pb-20;
+  @apply min-h-[630px] relative md:pb-16;
 
   // .hero__bg
   &__bg {
@@ -190,7 +190,7 @@ export default {
     }
 
     &-img {
-      display: block;
+      display: block !important;
       width: 100%;
       height: 100%;
       object-fit: cover;

@@ -1,6 +1,7 @@
 <template>
   <main>
     <HomeHero />
+    <HomeService />
   </main>
 </template>
 
