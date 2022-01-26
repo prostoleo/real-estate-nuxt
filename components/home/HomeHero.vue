@@ -26,7 +26,7 @@
             class="search__rooms-row mt-5 flex justify-start md:mt-0 md:border-r-[1px] border-solid border-r-border-color"
           >
             <button class="btn search__rooms">1</button>
-            <button class="btn search__rooms selected">2</button>
+            <button class="btn search__rooms">2</button>
             <button class="btn search__rooms">3</button>
             <button class="btn search__rooms">4+</button>
           </div>

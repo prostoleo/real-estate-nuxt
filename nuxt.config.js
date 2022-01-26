@@ -37,6 +37,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-config',
     '@nuxtjs/composition-api/module',
     // 'nuxt-windicss',
     // '@nuxtjs/tailwindcss',
@@ -44,6 +45,10 @@ export default {
     '@nuxtjs/style-resources',
     '@vueuse/nuxt',
   ],
+
+  eslint: {
+    cache: false,
+  },
 
   styleResources: {
     // your settings here
