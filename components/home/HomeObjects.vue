@@ -177,13 +177,13 @@ export default {}
   // .card__title
 
   &__title {
-    @apply text-base font-bold mb-[0.5em] text-white;
+    @apply text-base font-bold mb-[0.5em] text-white lg:text-2xl;
   }
 
   // .card__paragraph
 
   &__paragraph {
-    @apply text-sm font-medium text-white max-w-[25ch];
+    @apply text-sm font-medium text-white max-w-[25ch] lg:text-base;
   }
 
   // .card__bg
