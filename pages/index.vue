@@ -3,6 +3,9 @@
     <HomeHero />
     <HomeService />
     <HomeObjects />
+    <!-- <HomeDwellings /> -->
+    <HomeDwellings v-for="index in 3" :key="index" />
+    <BaseContact />
   </main>
 </template>
 
