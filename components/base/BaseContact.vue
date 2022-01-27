@@ -74,7 +74,7 @@ export default {}
   // .contact__wrapper
 
   &__wrapper {
-    @apply flex items-start justify-between;
+    @apply lg:flex lg:items-start lg:justify-between;
   }
 
   // .contact__content
