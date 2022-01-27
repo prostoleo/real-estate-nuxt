@@ -152,7 +152,7 @@ export default {
         rgba(10, 12, 14, 0) 26.31%
       );
       background-size: cover;
-      // background-position: center center;
+      background-position: 48% center;
       background-repeat: no-repeat;
       background-blend-mode: darken;
 
@@ -194,7 +194,7 @@ export default {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: 55% center;
 
       @include mq(med-lg) {
         object-position: 10% 50%;

@@ -26,6 +26,7 @@
           </span>
           <button
             class="md:hidden"
+            :class="{ 'z-40': isMenuOpen }"
             :aria-label="`${isMenuOpen ? 'закрыть' : 'открыть'} меню`"
             @click="toggleMenu"
           >
@@ -100,6 +101,12 @@
         </transition>
       </div>
     </BaseContainer>
+
+    <div
+      v-if="isMenuOpen"
+      class="overlay fixed h-screen w-screen bg-black/30 inset-0 z-[10] md:hidden"
+      @click="closeMenu"
+    ></div>
   </header>
 </template>
 
@@ -159,6 +166,10 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
+    },
+
+    closeMenu() {
+      this.isMenuOpen = false
     },
 
     onResize() {

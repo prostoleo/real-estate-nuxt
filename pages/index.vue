@@ -2,6 +2,7 @@
   <main>
     <HomeHero />
     <HomeService />
+    <HomeObjects />
   </main>
 </template>
 
