@@ -1,10 +1,24 @@
 <template>
   <li class="dwelling__card card">
     <header class="card__header">
-      <div class="card__gallery">
-        <div class="card__gallery-item">
-          <img src="https://source.unsplash.com/random/1000*600" alt="" />
-        </div>
+      <div class="swiper-card-img card__gallery relative">
+        <ul class="swiper-wrapper-card h-full flex">
+          <li
+            v-for="index in 6"
+            :key="index + Date.now().toString().slice(-4)"
+            class="swiper-wrapper-card__slide card__gallery-item basis-100% flex-grow flex-shrink-0"
+          >
+            <img
+              :src="`https://source.unsplash.com/random?sig=${getRandomInt(
+                1,
+                100
+              )}`"
+              alt=""
+            />
+          </li>
+        </ul>
+
+        <div class="swiper-pagination"></div>
         <!-- /.card__gallery-item -->
       </div>
       <!-- /.card__gallery -->
@@ -57,12 +71,68 @@ export default {
   data() {
     return {
       isPhoneShown: false,
+    };
+  },
+
+  mounted() {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
+    if (process.client) {
+      this.handleSwiper();
     }
   },
-}
+
+  methods: {
+    handleSwiper() {
+      const { Swiper, Pagination } = require('swiper');
+
+      this.swiper = new Swiper('.swiper-card-img', {
+        slidesPerView: 'auto',
+        direction: 'horizontal',
+        wrapperClass: 'swiper-wrapper-card',
+        slideClass: 'swiper-wrapper-card__slide',
+        centeredSlides: true,
+        centeredSlidesBounds: true,
+
+        modules: [Pagination],
+
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+
+          /* renderBullet(index, className) {
+            return `<span :class="${className} bg-white" :key="${index}"></span>`;
+          }, */
+        },
+      });
+    },
+
+    getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
+:root {
+  --swiper-pagination-color: white !important;
+  --swiper-theme-color: white !important;
+}
+.swiper-slide-active {
+  z-index: 10;
+}
+
+.swiper-pagination-bullet {
+  background: var(--swiper-pagination-color, white) !important;
+  opacity: 1 !important;
+
+  &-active {
+    opacity: 0.2 !important;
+  }
+}
+
 .card {
   @apply flex-grow-0 flex-shrink-0 basis-64 rounded-md overflow-hidden border border-stroke-color max-w-[256px];
 

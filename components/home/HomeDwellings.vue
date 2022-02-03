@@ -16,19 +16,17 @@
         </div>
         <!-- /.dwelling__upper -->
 
-        <!-- <client-only> -->
         <div class="swiper dwelling__cards">
           <ul class="swiper-wrapper">
             <DwellingCard
               v-for="index in 7"
-              :key="index"
+              :key="index + Date.now().toString().slice(-6)"
               class="swiper-slide"
             />
           </ul>
           <!-- If we need scrollbar -->
           <div class="swiper-scrollbar"></div>
         </div>
-        <!-- </client-only> -->
         <!-- /.dwelling__cards -->
       </div>
     </BaseContainer>
@@ -36,10 +34,6 @@
 </template>
 
 <script>
-// core version + navigation, pagination modules:
-// import Swiper from 'swiper/swiper-bundle';
-// import Swiper and modules styles
-// import 'swiper/swiper.scss';
 import 'swiper/swiper-bundle.css';
 import DwellingCard from '../DwellingCard.vue';
 
@@ -95,10 +89,10 @@ export default {
 
 <style lang="scss" scoped>
 .swiper {
-  padding-bottom: 0.75rem;
+  padding-bottom: min(2%, 1.75rem);
 }
 .swiper-scrollbar {
-  bottom: -4px;
+  bottom: -0.15rem;
 }
 .dwelling {
   // .dwelling__wrapper
