@@ -18,7 +18,14 @@
           </li>
         </ul>
 
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination">
+          <span
+            v-for="index in 6"
+            :id="`card-header-pagination-bullet-${index}`"
+            :key="index + Date.now().toString().slice(-4)"
+            class="card-header-pagination-bullet"
+          ></span>
+        </div>
         <!-- /.card__gallery-item -->
       </div>
       <!-- /.card__gallery -->
@@ -71,12 +78,20 @@ export default {
   data() {
     return {
       isPhoneShown: false,
+      activeSlide: null,
     };
   },
+
+  watch: {},
 
   mounted() {
     // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
+      this.bulletEls = Array.from(
+        document.querySelectorAll('.swiper-pagination-bullet')
+      );
+      // console.log('this.bulletEls: ', this.bulletEls);
+
       this.handleSwiper();
     }
   },
@@ -85,11 +100,17 @@ export default {
     handleSwiper() {
       const { Swiper, Pagination } = require('swiper');
 
+      const that = this;
+
       this.swiper = new Swiper('.swiper-card-img', {
         slidesPerView: 'auto',
         direction: 'horizontal',
         wrapperClass: 'swiper-wrapper-card',
         slideClass: 'swiper-wrapper-card__slide',
+
+        bulletClass: 'card-header-pagination-bullet',
+        bulletActiveClass: 'card-header-pagination-bullet-active',
+
         centeredSlides: true,
         centeredSlidesBounds: true,
 
@@ -98,12 +119,27 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
+        },
 
-          /* renderBullet(index, className) {
-            return `<span :class="${className} bg-white" :key="${index}"></span>`;
-          }, */
+        on: {
+          slideChange() {
+            that.bulletEls.forEach((bullet) => {
+              bullet.classList.remove('card-header-pagination-bullet-active');
+            });
+
+            // console.log('this: ', this);
+            const newI = this?.activeIndex;
+            // console.log('newI: ', newI);
+            // console.log('that: ', that);
+            // console.log('that.bulletEls: ', that.bulletEls);
+
+            that.bulletEls[newI].classList.add(
+              'card-header-pagination-bullet-active'
+            );
+          },
         },
       });
+      // console.log('this.swiper: ', this.swiper);
     },
 
     getRandomInt(min, max) {
@@ -124,13 +160,15 @@ export default {
   z-index: 10;
 }
 
-.swiper-pagination-bullet {
+.swiper-pagination > .card-header-pagination-bullet {
   background: var(--swiper-pagination-color, white) !important;
-  opacity: 1 !important;
+  background-color: white !important;
+  opacity: 0.2 !important;
 
-  &-active {
-    opacity: 0.2 !important;
-  }
+  // &-active {
+}
+.swiper-pagination > .card-header-pagination-bullet-active {
+  opacity: 1 !important;
 }
 
 .card {
